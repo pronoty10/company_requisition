@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>My Requisitions</h2>
+
+<table class="table table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Reason</th>
+            <th>Status</th>
+            <th>Requested At</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for req in requisitions %}
+        <tr>
+            <td>{{ req.product.name }}</td>
+            <td>{{ req.quantity }}</td>
+            <td>{{ req.reason }}</td>
+            <td>{{ req.status }}</td>
+            <td>{{ req.requested_at }}</td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="5">No requisitions found.</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
